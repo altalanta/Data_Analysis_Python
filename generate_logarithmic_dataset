@@ -1,0 +1,27 @@
+import numpy as np
+import pandas as pd
+import os
+
+# Set a random seed for reproducibility
+np.random.seed(0)
+
+# Generate X values
+X = np.random.rand(100, 1) * 10
+
+# Generate Y values with a logarithmic relationship
+Y =  np.log(X) + np.random.randn(100, 1)
+
+# Create a DataFrame to store the dataset
+df = pd.DataFrame({'X': X.flatten(), 'Y': Y.flatten()})
+
+
+
+# Get the path to the "Downloads" folder
+downloads_folder = os.path.expanduser('~') + '/Downloads/'
+
+# Save the dataset to an Excel spreadsheet in the "Downloads" folder
+# Replace 'logarithmic_dataset.xlsx' with the desired file name
+excel_file_path = os.path.join(downloads_folder, 'logarithmic_dataset.xlsx')
+df.to_excel(excel_file_path, index=False)
+
+print(f"File saved to {excel_file_path}")
